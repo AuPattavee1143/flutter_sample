@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/my_container.dart';
 import 'package:flutter_sample/my_scroll.dart';
+import 'package:flutter_sample/work_week3.dart';
 
 void main() {
   runApp(const MainApp());
@@ -14,7 +15,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Flutter Sample',
-      home:MyContainer()
+      home:WorkWeek3()
     );
   }
 }
