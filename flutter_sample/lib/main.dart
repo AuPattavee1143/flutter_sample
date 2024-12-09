@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/my_container.dart';
+import 'package:flutter_sample/my_grid_page.dart';
+import 'package:flutter_sample/my_listview_page.dart';
 import 'package:flutter_sample/my_scroll.dart';
 import 'package:flutter_sample/work_week3.dart';
 
@@ -15,7 +17,7 @@ class MainApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Flutter Sample',
-      home:WorkWeek3()
+      home:MyListviewPage()
     );
   }
 }
