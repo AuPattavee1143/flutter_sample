@@ -8,13 +8,14 @@ class MyListviewPage extends StatefulWidget {
   @override
   State<MyListviewPage> createState() => _MyListviewPageState();
 }
-var rnd = Random();
-var titleText = ['Star', 'Heart', 'Wi-Fi', 'Bluetooth', 'Gear'];
-var leadingIcon = [Icons.star,Icons.favorite,Icons.wifi,Icons.bluetooth,Icons.settings];
-var switchwifi = true;
-var swichbluetooth = false;
 
 class _MyListviewPageState extends State<MyListviewPage> {
+  var rnd = Random();
+  var titleText = ['Star', 'Heart', 'Wi-Fi', 'Bluetooth', 'Gear'];
+  var leadingIcon = [Icons.star,Icons.favorite,Icons.wifi,Icons.bluetooth,Icons.settings];
+  var switchwifi = true;
+  var swichbluetooth = false;
+
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar:  AppBar(title: const Text('ListVIew'), centerTitle: true,),
@@ -36,10 +37,12 @@ class _MyListviewPageState extends State<MyListviewPage> {
       leading: Icon(leadingIcon[index], size: 36,),
       title: Text(titleText[index]),
       subtitle: Text('\$${rnd.nextInt(50)+10}'),
+      trailing: trailingWidget(ctx, index),
       iconColor: Colors.deepPurple,
       onTap: ()=> myAlert(ctx, 'เปิดดูรายการ${titleText[index]}' ),
     );
   }
+
   Widget trailingWidget(BuildContext ctx, int index){
     var widget = <Widget>[
       const Icon(Icons.arrow_forward_ios),
@@ -51,19 +54,21 @@ class _MyListviewPageState extends State<MyListviewPage> {
         value: switchwifi,
         onChanged: (isOn) => setState(() {
           switchwifi = isOn;
-          var mag = (isOn)?'เปิด':'ปิด';
-          myAlert(ctx, '${titleText[index]}: $mag');
+          var msg = (isOn)?'เปิด':'ปิด';
+          myAlert(ctx, '${titleText[index]}: $msg');
         }),
       ),
       Switch(
         value: swichbluetooth, 
         onChanged: (isOn) => setState(() {
           swichbluetooth = isOn;
+          var msg = (isOn)?'เปิด':'ปิด';
+          myAlert(ctx, '${titleText[index]}: $msg');
         }),
       ),
       InkWell(
         child: const Icon(Icons.shopping_cart),
-        onTap: () {},
+        onTap: ()=>myAlert(ctx, 'ได้หยิบ ${titleText[index]} ใส่รถเข็นแล้ว'),
       )
     ];
     return widget[index];
@@ -79,9 +84,7 @@ class _MyListviewPageState extends State<MyListviewPage> {
             onPressed: () => Navigator.of(ctx).pop(), 
             child: const Text('OK'))
         ],
-      )
-      );
-  }
-
-  
+    )
+  );
+ }
 }
